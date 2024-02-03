@@ -23,6 +23,7 @@ modules:
     install:
       - nano
       - fish
+      - kmod-nvidia
       - langpacks-tr
       - acpid
       - acpi
@@ -34,7 +35,6 @@ modules:
       - firefox-langpacks # Bağımlılık sorunlarını önlemek için langpack'lerin de kaldırılması gerekiyor
   - type: akmods
     install:
-      - nvidia
       - ublue-os-nvidia-addons
       - ublue-os-akmods-addons
   - type: bling # ublue-os/bling'den ne alınacağını yapılandırın
