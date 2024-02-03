@@ -20,11 +20,9 @@ modules:
   - type: rpm-ostree
     repos:
       - https://packages.microsoft.com/yumrepos/vscode
-      - https://dl.google.com/linux/chrome/rpm/stable/x86_64
     install:
       - nano
       - fish
-      - google-chrome-stable
       - code
       - langpacks-tr
       - acpid
@@ -57,6 +55,7 @@ modules:
       - Telegram Desktop: org.telegram.desktop
       - Prompt: org.gnome.Prompt.Devel
       - FileZilla: org.filezillaproject.Filezilla
+      - Microsoft Edge (dev): com.microsoft.EdgeDev
   - type: script
     scripts:
       # bu, imzalı görsellerin çalışması için uygun politika ve imzalama dosyalarını ayarlar
