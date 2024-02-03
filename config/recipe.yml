@@ -23,7 +23,9 @@ modules:
     install:
       - nano
       - fish
-      - kmod-nvidia
+      - akmod-nvidia
+      - xorg-x11-drv-nvidia-cuda
+      - xorg-x11-drv-nvidia
       - langpacks-tr
       - acpid
       - acpi
@@ -35,8 +37,7 @@ modules:
       - firefox-langpacks # Bağımlılık sorunlarını önlemek için langpack'lerin de kaldırılması gerekiyor
   - type: akmods
     install:
-      - ublue-os-nvidia-addons
-      - ublue-os-akmods-addons
+      - nvidia 
   - type: bling # ublue-os/bling'den ne alınacağını yapılandırın
     install:
       - justfiles # "!include /usr/share/ublue-os/just/100-bling.just" ekleyin
