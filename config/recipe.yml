@@ -23,7 +23,6 @@ modules:
     install:
       - nano
       - fish
-      - code
       - langpacks-tr
       - acpid
       - acpi
