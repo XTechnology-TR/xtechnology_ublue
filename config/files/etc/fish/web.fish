@@ -1,0 +1,94 @@
+#  Calls to various CLI friendly web services
+#  
+#  Author:  XTechnology
+
+# *`myip` Harici IP'yi gösterir
+alias myip='curl ifconfig.co'
+
+# *`localip` (yerel) dahili IP'yi gösterir
+# alternatif moreutils'ten "ifdata -pa eth0" olabilir
+alias localip="ip -o route get to 1.1.1.1 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'"
+
+# *`whereami` whoami'ye benzer ancak harici IP'nizi ve coğrafi konumunuzu gösterir
+alias whereami='curl ifconfig.co/json'
+
+function random-name --description "Random name for registration on random websites. How about Helen Lovick? Roger Rice?"
+    curl www.pseudorandom.name
+end
+
+function random-alias --description "Docker-like alias generator: `thirsty_mahavira`, `boring_heisenberg`. Don't know how to name file/project/branch/file? Use this!"
+    curl -s https://frightanic.com/goodies_content/docker-names.php | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
+end
+
+function random-email --description "Random email for registration on random websites. Generate random email in one of Mailinator subdomains and provide link to check it. Useful when <http://bugmenot.com/> is not available."
+    set domain (echo -e \
+"notmailinator.com
+veryrealemail.com
+chammy.info
+tradermail.info
+mailinater.com
+suremail.info
+reconmail.com" | shuf -n1)
+    set name (curl -s www.pseudorandom.name | string replace ' ' '')
+    set email $name@$domain
+    printf "$email" | tee /dev/tty | xclip -sel clip
+    echo -e "\ncopied to clipboard\nhttps://www.mailinator.com/v3/index.jsp?zone=public&query=$name#/#inboxpane"
+end
+
+function random-password --description "Generate random password" --argument-names length
+    test -n "$length"; or set length 13
+    head /dev/urandom | tr -dc "[:alnum:]~!#\$%^&*-+=?./|" | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
+end
+
+function weather --description "Show weather"
+    resize -s $LINES 125
+    curl wttr.in/$argv
+end
+
+function xsh --description "Prepend this to command to explain its syntax i.e. `xsh iptables -vnL --line-numbers`"
+    microsoft-edge-stable -o confirm_qq=false "http://explainshell.com/explain?cmd=$argv"
+    # w3m'yi Chrome gibi herhangi bir tarayıcıyla değiştirin
+end
+
+function transfer --description "Upload file to transfer.sh"
+    curl --progress-bar --upload-file $argv https://transfer.sh/(basename $argv)
+end
+
+function translate --description "Translate word using [Yandex](https://github.com/dmi3/bin/blob/master/yandex-translate.sh)"
+    translate-yandex.sh "$argv"
+end
+
+function syn --description "Find synonyms for word"
+    test -e ~/git/stuff/keys/bighugelabs || echo "Get API key at https://words.bighugelabs.com/account/getkey and put in "(status --current-filename)
+    curl http://words.bighugelabs.com/api/2/(cat ~/git/stuff/keys/bighugelabs)/$argv/
+end
+
+function emoji --description "Search emoji by name"
+    curl -s -X GET https://www.emojidex.com/api/v1/search/emoji -d code_cont=$argv | jq -r '.emoji | .[] | .moji | select(. != null)' | tr '\n' ' '
+end
+
+function waitweb --description 'Wait until web resource is available. Useful when you are waiting for internet to get back, or Spring to start' --argument-names url
+    set -q url || set url 'google.com'
+    printf "Waithing for the $url"
+    while not curl --output /dev/null --silent --head --fail "$url"
+        printf '.'
+        sleep 10
+    end
+    printf "\n$url is online!"
+    notify-send -u critical "$url is online!"
+end
+
+# *`xkcd` Terminalinizde rengi ayarlanmış xkcd'yi yazdırın! Bkz. <https://developer.run/40>
+alias xkcd='curl -sL https://c.xkcd.com/random/comic/ | grep -Po "https:[^\"]*" | grep png | xargs curl -s | convert -resize 50% -negate -fuzz 10% -transparent black png: png:- | kitty +kitten icat'
+
+# *`albumart` Spotify'da şu anda çalan şarkının yüksek çözünürlüklü albüm resmini göster
+# -[sp](https://Gist.github.com/wandernauta/6800547) gerektirir
+alias albumart='sp metadata | grep -Po "(?<=url\|).*" | xargs curl -s | grep -Po "https:[^\"]*" | grep "i.scdn.co/image/" | head -1 | xargs curl -s | kitty +kitten icat'
+
+function virustotal --description "Check file hash by virustotal.com"
+    test -e ~/git/stuff/keys/virustotal || echo "Get API key at https://www.virustotal.com/gui/my-apikey and put in "(status --current-filename)
+    curl -sL --request GET \
+        --url https://www.virustotal.com/api/v3/files/(sha256sum $argv | cut -f 1 -d " ") \
+        --header "x-apikey: "(cat ~/git/stuff/keys/virustotal) \
+        | jq ".data .attributes .last_analysis_stats, .data .attributes .tags, .data .attributes .total_votes"
+end
