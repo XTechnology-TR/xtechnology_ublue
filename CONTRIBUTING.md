@@ -1,141 +1,134 @@
-# Welcome to Universal Blue
+# Universal Blue'ya hoş geldiniz
 
-Thanks for taking the time to look into helping out!
-All contributions are appreciated! 
-Please refer to our [Code of Conduct](/CODE_OF_CONDUCT.md) while you're at it!
+Yardım etmeye zaman ayırdığınız için teşekkür ederiz!
+Tüm katkılar takdir edilmektedir!
+Lütfen bunu yaparken [Davranış Kurallarımıza](/CODE_OF_CONDUCT.md) bakın!
 
-Feel free to report issues as you find them, and [helping others in the discussions]() is always appreciated.
+Bulduğunuz sorunları bildirmekten çekinmeyin; [tartışmalarda diğerlerine yardımcı olmak]() her zaman takdire şayandır.
 
-# Contributing
+# Katkı
 
-All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 
+Her türlü katkı teşvik edilir ve değerlenir. Farklı yardım yolları ve bu projenin bunları nasıl ele aldığıyla ilgili ayrıntılar için [İçindekiler Tablosu](#içindekiler) bölümüne bakın. Lütfen katkınızı yapmadan önce ilgili bölümü okuduğunuzdan emin olun. Bu, biz bakımcıların işini çok daha kolaylaştıracak ve katılan herkesin deneyimini kolaylaştıracak. Topluluk katkılarınızı sabırsızlıkla bekliyor.
+> Projeyi beğendiyseniz ancak katkıda bulunacak zamanınız yoksa sorun değil. Projeyi desteklemenin ve takdirinizi göstermenin başka kolay yolları da var; bunlardan da çok memnun oluruz:
+> -Projeye yıldız verin
+> -Bunun hakkında tweet atın
+> -Projenizin benioku dosyasında bu projeye bakın
+> -Yerel buluşmalarda projeden bahsedin ve arkadaşlarınıza/meslektaşlarınıza söyleyin
 
-> And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:
-> - Star the project
-> - Tweet about it
-> - Refer this project in your project's readme
-> - Mention the project at local meetups and tell your friends/colleagues
+## İçindekiler
 
-## Table of Contents
+-[Davranış Kuralları](#davraniskurallari)
+-[Bir Sorum Var](#bir-sorum-var)
+-[Katkıda bulunmak istiyorum](#katkıda-bulunmak-istiyorum)
+-[Hata Bildiriliyor](#hata-bildiriliyor)
+-[Gelen değişiklikler nasıl test edilir](#gelen-değişiklikler-nasıl-yapılır)
+-[Yerel Olarak İnşa Etme](#yerel-olarak-inşa-etme)
+-[Stil Kılavuzları](#stil-kılavuzları)
+-[İleti İletileri](#taahhüt-mesajları)
+-[Proje Ekibine Katılın](#proje-ekibine-katıl)
 
-- [Code of Conduct](#code-of-conduct)
-- [I Have a Question](#i-have-a-question)
-- [I Want To Contribute](#i-want-to-contribute)
-- [Reporting Bugs](#reporting-bugs)
-- [How to test incoming changes](#how-to-test-incoming-changes)
-- [Building Locally](#building-locally)
-- [Styleguides](#styleguides)
-- [Commit Messages](#commit-messages)
-- [Join The Project Team](#join-the-project-team)
+## Davranış kodu
 
-## Code of Conduct
+Bu proje ve ona katılan herkes,
+[CONTRIBUTING.md Davranış Kuralları](/CODE_OF_CONDUCT.md).
+Katılarak bu kurallara uymanız bekleniyor. Lütfen kabul edilemez davranışları bildirin
+jorge.castro@gmail.com adresine
 
-This project and everyone participating in it is governed by the
-[CONTRIBUTING.md Code of Conduct](/CODE_OF_CONDUCT.md).
-By participating, you are expected to uphold this code. Please report unacceptable behavior
-to jorge.castro@gmail.com
+## Bir sorum var
+> Bir soru sormak istiyorsanız [tartışma forumunda](https://github.com/orgs/ublue-os/discussions) sorun.
 
-## I Have a Question
+## Katkıda Bulunmak İstiyorum
 
-> If you want to ask a question, ask in the [discussion forum](https://github.com/orgs/ublue-os/discussions)
+> ### Yasal Uyarı
+> Bu projeye katkıda bulunurken içeriğin %100'ünü yazdığınızı, içerik üzerinde gerekli haklara sahip olduğunuzu ve katkıda bulunduğunuz içeriğin proje lisansı kapsamında sağlanabileceğini kabul etmelisiniz.
 
-## I Want To Contribute
+Genel olarak konuşursak, yapıların sağlıklı kalması ve kendimizin mutlu olması için [Tembel Konsensüs](http://lazyconcens.us/) geliştirme modelini izlemeye çalışıyoruz.
+-Bir karara varmak için fikir birliğine varmak istiyorsanız geri bildirim için bir sorun yayınlayın ve saat dilimlerini, hafta sonlarını/tatilleri/çalışma saatlerini hesaba katmayı unutmayın.
+   -İnsanların yapılarında fikir sahibi olmalarını istiyoruz, bu nedenle yukarıdan aşağıya bir organizasyondan ziyade gevşek bir depolar konfederasyonuyuz.
+   -Kendi eşyalarınızı birleştirmemeye çalışın, inceleme isteyin. Yeterli incelemeciye sahip olduğumuz bir noktada şube korumasını etkinleştireceğiz.
 
-> ### Legal Notice 
-> When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
+### Hataları Bildirmek
 
-Generally speaking we try to follow the [Lazy Concensus](http://lazyconcens.us/) model of development to keep the builds healthy and ourselves happy. 
-   - If you're looking for concensus to make a decision post an issue for feedback and remember to account for timezones and weekends/holidays/work time. 
-   - We want people to be opinionated in their builds so we're more of a loose confederation of repos than a top-down org.
-   - Try not to merge your own stuff, ask for a review. At some point when we have enough reviewers we'll be turning on branch protection. 
+#### Hata Raporu Göndermeden Önce
 
-### Reporting Bugs
+İyi bir hata raporu sorunu ayrıntılı olarak açıklamalıdır. Genel konuşma:
 
-#### Before Submitting a Bug Report
+-En son sürümü kullandığınızdan emin olun.
+-Bunların resmi olmayan yapılar olduğunu unutmayın; genellikle bir sorunu burada veya Fedora'da bildirmeden önce araştırmak akıllıca olacaktır!
+-Hata hakkında bilgi toplayın:
+  -'rpm-ostree durumu -v' genellikle yardımcı olur
+-Resim ve Sürüm
+-Muhtemelen girdiniz ve çıktınız
+-Sorunu güvenilir bir şekilde yeniden oluşturabiliyor musunuz? Ayrıca bunu eski versiyonlarla da yeniden üretebilir misiniz?
 
-A good bug report should describe the issue in detail. Generally speaking:
+### Gelen değişiklikler nasıl test edilir
 
-- Make sure that you are using the latest version.
-- Remember that these are unofficial builds, it's usually prudent to investigate an issue before reporting it here or in Fedora!
-- Collect information about the bug:
-  - `rpm-ostree status -v` usually helps
-- Image and Version 
-- Possibly your input and the output
-- Can you reliably reproduce the issue? And can you also reproduce it with older versions?
-
-### How to test incoming changes
-
-One of the nice things about the image model is that we can generate an entire OS image for every change we want to commit, so this makes testing way easier than in the past. You can rebase to it, see if it works, and then move back. This also means we can increase the amount of testers! 
-
-We strive towards a model where proposed changes are more thoroughly reviewed and tested by the community. So here's how to do it. If you see a pull request that is opened up on an image you're following you can leave a review on how it's working for you. At the bottom of every PR you'll see something like this: 
+İmaj modelinin güzel yanlarından biri, yapmak istediğimiz her değişiklik için tam bir işletim sistemi imajı oluşturabilmemizdir, bu da testi geçmişe göre çok daha kolay hale getirir. Bunu yeniden temellendirebilir, çalışıp çalışmadığını görebilir ve ardından geri dönebilirsiniz. Bu aynı zamanda test kullanıcılarının sayısını artırabileceğimiz anlamına da geliyor!
+Önerilen değişikliklerin topluluk tarafından daha kapsamlı bir şekilde incelendiği ve test edildiği bir model oluşturmaya çalışıyoruz. İşte bunu nasıl yapacağınız. Takip ettiğiniz bir görselde açılan bir çekme isteği görürseniz, bunun sizin için nasıl çalıştığına dair bir inceleme bırakabilirsiniz. Her PR'ın altında şunun gibi bir şey göreceksiniz:
 
 ![image](https://user-images.githubusercontent.com/1264109/221305388-3860fc07-212c-4eb9-80d9-5d7a35a77f46.png)
 
-Click on "Add your review", and then you'll see this: 
-
+"Yorumunuzu ekleyin"i tıkladığınızda şunu göreceksiniz:
 ![image](https://user-images.githubusercontent.com/1264109/221307636-5e312e48-821f-4206-848f-7fbc2c91cd78.png)
 
-Don't worry, you can't mess anything up, all the merging and stuff will be done by the maintainer, what this does is lets us gather information in a more formal manner than just shoving everything in a forum thread. The more people are reviewing and testing images, the better off we'll be, especially for images that are new like Sericea.
+Endişelenmeyin, hiçbir şeyi berbat edemezsiniz, tüm birleştirme ve benzeri şeyler bakımcı tarafından yapılacaktır, bu, her şeyi bir forum başlığına tıkmaktan daha resmi bir şekilde bilgi toplamamıza olanak tanır. Görselleri ne kadar çok insan inceleyip test ederse, özellikle Sericea gibi yeni görseller için o kadar iyi durumda olacağız.
+Bir noktada size görseli nasıl yeniden temellendireceğiniz ve diğer şeyler hakkında talimatlar bırakacak bir botumuz olacak, ancak bu arada talimatları manuel olarak bırakacağız.
 
-At some point we'll have a bot that will leave you instructions on how to rebase to the image and all that stuff, but in the meantime we'll leave instructions manually. 
+İşte bir örnek: https://github.com/ublue-os/nvidia/pull/49
 
-Here's an example: https://github.com/ublue-os/nvidia/pull/49
+## Yerel Olarak Bina Oluşturmak
 
-## Building Locally
+Gereken minimum araçlar git ve podman'ın etkinleştirildiği ve yapılandırıldığı çalışan bir makinedir.
+Yerel olarak oluşturmak GitHub'da oluşturmaktan çok daha hızlıdır ve uzaktan kumandaya geçmeden önce hızlı hareket etmenin iyi bir yoludur.
 
-The minimum tools required are git and a working machine with podman enabled and configured. 
-Building locally is much faster than building in GitHub and is a good way to move fast before pushing to a remote.
+### İstediğiniz repoyu klonlayın
 
-### Clone the repo you want
+    git klonu https://github.com/ublue-os/base.git
 
-    git clone https://github.com/ublue-os/base.git
-
-### Build the image
+### Görüntüyü oluşturun
     
-First make sure you can build an existing image: 
+Öncelikle mevcut bir görüntüyü oluşturabildiğinizden emin olun:
     
-    podman build . -t something
+    podman'ın yapısı. -bir şey
     
-Then confirm your image built:
+Ardından görüntünüzün oluşturulduğunu onaylayın:
     
-    podman image ls 
-
-TODO: Set up and push to your own local registry
+    podman resmi ls
+YAPILACAK: Kendi yerel kayıt defterinizi kurun ve gönderin
     
-### Make your changes
+### Değişikliklerinizi yapın
 
-This usually involved editing the `Containerfile`. Most techniques for building containers apply here, if you're new to containers using the term "Dockerfile" in your searches usually shows more results when you're searching for information. 
+Bu genellikle 'Konteyner Dosyası'nın düzenlenmesini içeriyordu. Kapsayıcılar oluşturmaya yönelik çoğu teknik burada geçerlidir; eğer kaplar konusunda yeniyseniz, aramalarınızda "Dockerfile" terimini kullanmak, bilgi ararken genellikle daha fazla sonuç gösterir.
 
-Check out CoreOS's [layering examples](https://github.com/coreos/layering-examples) for more information on customizing. 
+Özelleştirme hakkında daha fazla bilgi için CoreOS'un [katmanlama örneklerine](https://github.com/coreos/layering-examples) göz atın.
 
-### Reporting problems to Fedora
+### Sorunları Fedora'ya bildirme
 
-We endevaour to be a good partner for Fedora.
+Fedora için iyi bir ortak olmaya çalışıyoruz.
 
-This project is consuming new features in Fedora and ostree, it is not uncommon to find an issue.
-Issues should be reported upstream, and in some cases we can help test and find fixes. 
-Some of the issues you find may involve other dependencies in other projects, in those cases the Fedora team will tell you where to report the issue. 
+Bu proje, Fedora ve ostree'deki yeni özellikleri tüketiyor; bir sorunla karşılaşmak alışılmadık bir durum değil.
+Sorunlar yukarı yönde bildirilmelidir ve bazı durumlarda test yapılmasına ve düzeltmelerin bulunmasına yardımcı olabiliriz.
+Bulduğunuz sorunlardan bazıları diğer projelerdeki diğer bağımlılıkları içerebilir; bu durumlarda Fedora ekibi sorunu nereye bildireceğinizi size söyleyecektir.
+Yukarı akış hata izleyicisi: [https://github.com/fedora-silverblue/issue-tracker/issues](https://github.com/fedora-silverblue/issue-tracker/issues)
 
-Upstream bug tracker: [https://github.com/fedora-silverblue/issue-tracker/issues](https://github.com/fedora-silverblue/issue-tracker/issues)
+## Stil kılavuzları
+### Mesajları Kaydet
 
-## Styleguides
-### Commit Messages
+Değişiklik günlüklerini düzenli tutmak için [Geleneksel Taahhütleri](https://www.conventionalcommits.org/en/v1.0.0/) kullanıyoruz ve bunları bir botla uyguluyoruz:
 
-We use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) and enforce them with a bot to keep the changelogs tidy:
+''''
+görev: Oyster derleme komut dosyasını ekleme
+dokümanlar: şapka sallanmasını açıklayın
+beceri: beta dizisi ekle
+düzeltme: bozuk onay mesajını kaldır
+refactor: 4d3d3d3 ve flarhgunnstow arasındaki mantığı paylaş
+stil: sekmeleri boşluklara dönüştür
+test: Tayne'in giysilerini muhafaza ettiğinden emin olun
+''''
 
-```
-chore: add Oyster build script
-docs: explain hat wobble
-feat: add beta sequence
-fix: remove broken confirmation message
-refactor: share logic between 4d3d3d3 and flarhgunnstow
-style: convert tabs to spaces
-test: ensure Tayne retains clothing
-```
+## Proje Ekibine Katılın
 
-## Join The Project Team
+Bir şeyin bakımını yapmakla ilgileniyorsanız bize bildirin!
 
-If you're interested in _maintaining_ something then let us know!
-
-## Attribution
-This guide is based on the **contributing.md**. [Make your own](https://contributing.md/)!
+## İlişkilendirme
+Bu kılavuz **contributing.md**'ye dayanmaktadır. [Kendinizinkini yapın](https://contributing.md/)!

@@ -23,15 +23,11 @@ ARG IMAGE_REGISTRY=ghcr.io/ublue-os
 
 COPY cosign.pub /usr/share/ublue-os/cosign.pub
 
-# Copy the bling from ublue-os/bling into tmp, to be installed later by the bling module
-# Feel free to remove these lines if you want to speed up image builds and don't want any bling
+# Daha sonra bling modülü tarafından kurulmak üzere bling'i ublue-os/bling'den tmp'ye kopyalayın
+# Görüntü oluşumunu hızlandırmak ve gösterişten kaçınmak istiyorsanız bu çizgileri kaldırmaktan çekinmeyin
 COPY --from=ghcr.io/ublue-os/bling:latest /rpms /tmp/bling/rpms
 COPY --from=ghcr.io/ublue-os/bling:latest /files /tmp/bling/files
 
-COPY --from=ghcr.io/ublue-os/config:latest /files/usr/etc/udev/rules /
-COPY --from=ghcr.io/ublue-os/config:latest /files/usr/etc/fish /
-COPY --from=ghcr.io/ublue-os/config:latest /files/usr/etc/modprobe.d /
-COPY --from=ghcr.io/ublue-os/config:latest /files/usr/etc/dracut.conf.d /
 
 # Copy build scripts & configuration
 COPY build.sh /tmp/build.sh

@@ -1,98 +1,93 @@
-# xtechnology_ublue
+# xteknoloji_ublue
 
-> **Warning**
-> Startingpoint was recently rewritten, and this version is considered a "1.0" *semi-*stable release.
-> There are breaking changes between this and the previous version.
-> If you are merging changes from the previous (v0) version, please refer to [the heads-up blog post](https://universal-blue.org/blog/2023/09/02/startingpoint-rewrite-heads-up-what-you-need-to-know/).
+> **Uyarı**
+> Startpoint yakın zamanda yeniden yazıldı ve bu sürüm "1.0" *yarı*kararlı sürüm olarak kabul ediliyor.
+> Bu sürümle önceki sürüm arasında önemli değişiklikler var.
+> Önceki (v0) sürümdeki değişiklikleri birleştiriyorsanız lütfen [ön bilgi blog yayınına](https://universal-blue.org/blog/2023/09/02/startingpoint-rewrite-heads-bakın) bilmeniz gerekenler/).
+[![build-ublue](https://github.com/xteknoloji-tr/xteknoloji_ublue/actions/workflows/build.yml/badge.svg)](https://github.com/xteknoloji-tr/xteknoloji_ublue/eylemler/iş akışları/build.yml)
 
-[![build-ublue](https://github.com/xtechnology-tr/xtechnology_ublue/actions/workflows/build.yml/badge.svg)](https://github.com/xtechnology-tr/xtechnology_ublue/actions/workflows/build.yml)
+Bu, istediğiniz şekilde özelleştirilebilecek şekilde tasarlanmış [yerel bir kapsayıcı görüntüsü](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) oluşturmaya yönelik, sürekli güncellenen bir şablon deposudur. GitHub görselinizi sizin için oluşturacak ve ardından onu sizin için [ghcr.io](https://github.com/features/packages) üzerinde barındıracaktır. Daha sonra bilgisayarınıza bu görüntüden önyükleme yapmasını söylersiniz. GitHub sizin için 90 günlük görüntü yedeklemesi tutar, teşekkürler Microsoft!
 
-This is a constantly updating template repository for creating [a native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) designed to be customized however you want. GitHub will build your image for you, and then host it for you on [ghcr.io](https://github.com/features/packages). You then just tell your computer to boot off of that image. GitHub keeps 90 days worth image backups for you, thanks Microsoft!
+Daha fazla bilgi için [uBlue ana sayfasına](https://universal-blue.org/) ve [ana uBlue deposuna](https://github.com/ublue-os/main/) göz atın.
 
-For more info, check out the [uBlue homepage](https://universal-blue.org/) and the [main uBlue repo](https://github.com/ublue-os/main/)
+## Başlarken
 
-## Getting started
+Bu şablonu temel alarak kendi deponuzu oluşturmaya yönelik hızlı kurulum talimatları için [Belgelerdeki Kendi Sayfanızı Oluşturun](https://universal-blue.org/tinker/make-your-own/) belgesine bakın.
 
-See the [Make Your Own-page in the documentation](https://universal-blue.org/tinker/make-your-own/) for quick setup instructions for setting up your own repository based on this template.
+Endişelenmeyin, sadece terminali ve git'i kullanmayla ilgili bazı temel bilgileri gerektirir.
 
-Don't worry, it only requires some basic knowledge about using the terminal and git.
+Kurulumdan sonra, özel görüntünüzü tanımlamak için bu README'yi güncellemeniz önerilir.
 
-After setup, it is recommended you update this README to describe your custom image.
+> **Not**
+> Bu deponun her yerinde, `xteknoloji-tr/xteknoloji_ublue' kısmını kendi deponuzun ayrıntılarıyla değiştirmeyi unutmayın. Otomatik depo kurulum araçlarından birini kullanmadığınız sürece, bu durumda önceki depo tanımlayıcısı zaten deponuzun ayrıntıları olmalıdır.
 
-> **Note**
-> Everywhere in this repository, make sure to replace `xtechnology-tr/xtechnology_ublue` with the details of your own repository. Unless you used one of the automatic repository setup tools in which case the previous repo identifier should already be your repo's details.
+> **Uyarı**
+> Başlamak için, yalnızca özelleştirmeleriniz için olan "canlı" adında bir dal oluşturmanız gerekir. Bu, GitHub iş akışının kapsayıcı kayıt defterinize dağıtacağı **tek**daldır. Orijinal "şablon" dalında herhangi bir değişiklik yapmayın. Dokunulmadan kalmalı. Bu dal yapısını kullanarak, kendi "yayınlanmış görüntü" dalınız, geliştirme dallarınız ve orijinal yukarı akış "şablon" dalı arasında net bir ayrım sağlarsınız. Yukarı akış "şablon" dalını periyodik olarak senkronize edin ve en son revizyona hızlı ileri sarın. Ardından, en son gelişmeleri zahmetsizce kendi deponuza dahil etmek için, herhangi bir karmaşık, manuel "birleştirme işlemine" ihtiyaç duymadan, "canlı" şubenizi güncellenmiş şablona yeniden temellendirin.
 
-> **Warning**
-> To start, you *must* create a branch called `live` which is exclusively for your customizations. That is the **only** branch the GitHub workflow will deploy to your container registry. Don't make any changes to the original "template" branch. It should remain untouched. By using this branch structure, you ensure a clear separation between your own "published image" branch, your development branches, and the original upstream "template" branch. Periodically sync and fast-forward the upstream "template" branch to the most recent revision. Then, simply rebase your `live` branch onto the updated template to effortlessly incorporate the latest improvements into your own repository, without the need for any messy, manual "merge commits".
+## Kişiselleştirme
 
-## Customization
+Özelleştirmeye başlamanın en kolay yolu 'config/recipe.yml' dosyasına bakmak ve onu değiştirmektir. Yorumlar kullanılarak belgelenmiştir ve anlaşılması oldukça kolay olmalıdır.
+Özel yapılandırma dosyaları eklemek istiyorsanız, bunları yalnızca OSTree'nin resmi "yapılandırma şablonu" dizini olan ve önyükleme sırasında `/etc/` dizinine uygulanacak olan `/usr/etc/` dizinine ekleyebilirsiniz. `config/files/usr` varsayılan olarak görüntünüzün `/usr` dizinine kopyalanır. Görüntünüzün köküne başka dizinler eklemeniz gerekiyorsa, bunu 'dosyalar' modülünü kullanarak yapabilirsiniz. OSTree tabanlı dağıtımların görüntü yapılarında `/var/` dizinine yazmak desteklenmez ve çalışmaz, çünkü bu yerel kullanıcı tarafından yönetilen bir dizindir!
+Özelleştirme hakkında daha fazla bilgi için, bkz. [yapılandırma dizinindeki README'yi](config/README.md)
 
-The easiest way to start customizing is by looking at and modifying `config/recipe.yml`. It's documented using comments and should be pretty easy to understand.
+Özel görseller oluşturmaya ilişkin belgeler mevcuttur/iki ayrı yere yazılmalıdır:
 
-If you want to add custom configuration files, you can just add them in the `/usr/etc/` directory, which is the official OSTree "configuration template" directory and will be applied to `/etc/` on boot. `config/files/usr` is copied into your image's `/usr` by default. If you need to add other directories in the root of your image, that can be done using the `files` module. Writing to `/var/` in the image builds of OSTree-based distros isn't supported and will not work, as that is a local user-managed directory!
+-Özel görseller oluşturmaya ilişkin genel belgeler, en iyi uygulamalar, eğitimler vb. için [Web sitesindeki Tamirci Rehberi](https://universal-blue.org/tinker/make-your-own/).
+-Şablonun giriş ve çıkışlarına özel belgeler (modül belgeleri gibi) ve özel görüntülerin nasıl oluşturulacağıyla ilgili bazı temel rehberlik için bu deponun içinde.
 
-For more information about customization, see [the README in the config directory](config/README.md)
+## Kurulum
 
-Documentation around making custom images exists / should be written in two separate places:
-* [The Tinkerer's Guide on the website](https://universal-blue.org/tinker/make-your-own/) for general documentation around making custom images, best practices, tutorials, and so on.
-* Inside this repository for documentation specific to the ins and outs of the template (like module documentation), and just some essential guidance on how to make custom images.
+> **Uyarı**> [Bu deneysel bir özelliktir](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) ve üretimde kullanılmamalıdır, bir süre sanal makinede deneyin!
 
-## Installation
+Mevcut bir Silverblue/Kinoite kurulumunu en son sürüme yeniden temellendirmek için:
 
-> **Warning**
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) and should not be used in production, try it in a VM for a while!
+-Doğru imzalama anahtarlarını ve ilkelerini yüklemek için öncelikle imzasız görüntüyü yeniden temellendirin:
+  ''''
+  rpm-ostree rebase ostree-unverified-registry:ghcr.io/xteknoloji-tr/xteknoloji_ublue:latest
+  ''''
+-Yeniden yapılandırmayı tamamlamak için yeniden başlatın:
+  ''''
+  systemctl yeniden başlat
+  ''''
+-Daha sonra imzalı görseli şu şekilde yeniden düzenleyin:
+  ''''
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xteknoloji-tr/xteknoloji_ublue:latest
+  ''''
+-Kurulumu tamamlamak için yeniden başlatın
+  ''''
+  systemctl yeniden başlat
+  ''''
 
-To rebase an existing Silverblue/Kinoite installation to the latest build:
+Bu depo aynı zamanda tarih etiketleri de oluşturur, dolayısıyla belirli bir günün yapısını yeniden oluşturmak istiyorsanız:
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/xtechnology-tr/xtechnology_ublue:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xtechnology-tr/xtechnology_ublue:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
+''''
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xteknoloji-tr/xteknoloji_ublue:20230403
+''''
+Bu depo varsayılan olarak imzalamayı da destekler.
 
-This repository builds date tags as well, so if you want to rebase to a particular day's build:
+'En son' etiketi otomatik olarak en son yapıya işaret edecektir. Bu yapı yine de her zaman "recipe.yml"de belirtilen Fedora sürümünü kullanacaktır, böylece yanlışlıkla bir sonraki ana sürüme güncellenmezsiniz.
 
-```
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xtechnology-tr/xtechnology_ublue:20230403
-```
+##ISO
 
-This repository by default also supports signing.
+Bu şablon, görüntünüzün ISO'sunu oluşturmak ve yayınlamak için basit bir Github Eylemi içerir.
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+Eylemi çalıştırmak için, deponuzun başlangıç ​​noktasına yapılan tüm referansları değiştirerek `boot_menu.yml` dosyasını düzenlemeniz yeterlidir. Bu, eylemi otomatik olarak tetiklemelidir.
+Eylem, [izojeneratör](https://github.com/ublue-os/isogenerator) kullanır ve resmi Universal Blue ISO'ya benzer şekilde çalışır. Herhangi bir sorunla karşılaşırsanız öncelikle [kurulumla ilgili dokümantasyon sayfasını](https://universal-blue.org/installation/) kontrol etmelisiniz. ISO bir ağ yükleyicisidir ve her zaman görüntünüzün en son sürümünü çekmelidir.
+Bu ISO sürümü eyleminin, [release-please](https://github.com/googleapis/release-please) gibi tam gelişmiş sürüm otomasyonunun yerine geçmediğini unutmayın.
 
-## ISO
+## 'sadece'
 
-This template includes a simple Github Action to build and release an ISO of your image. 
+[`just`](https://just.systems/) komut çalıştırıcısı, tüm `ublue-os/main`'den türetilmiş görüntülere dahildir.
 
-To run the action, simply edit the `boot_menu.yml` by changing all the references to startingpoint to your repository. This should trigger the action automatically.
-
-The Action uses [isogenerator](https://github.com/ublue-os/isogenerator) and works in a similar manner to the official Universal Blue ISO. If you have any issues, you should first check [the documentation page on installation](https://universal-blue.org/installation/). The ISO is a netinstaller and should always pull the latest version of your image.
-
-Note that this release-iso action is not a replacement for a full-blown release automation like [release-please](https://github.com/googleapis/release-please).
-
-## `just`
-
-The [`just`](https://just.systems/) command runner is included in all `ublue-os/main`-derived images.
-
-You need to have a `~/.justfile` with the following contents and `just` aliased to `just --unstable` (default in posix-compatible shells on ublue) to get started with just locally.
+Yalnızca yerel olarak başlamak için aşağıdaki içeriğe sahip bir "~/.justfile" dosyanızın olması ve "just" takma adının "just --unstable" (umblue'daki posix uyumlu kabuklarda varsayılan) olması gerekir.
 ```
 !include /usr/share/ublue-os/just/main.just
 !include /usr/share/ublue-os/just/nvidia.just
 !include /usr/share/ublue-os/just/custom.just
 ```
-Then type `just` to list the just recipes available.
 
-The file `/usr/share/ublue-os/just/custom.just` is intended for the custom just commands (recipes) you wish to include in your image. By default, it includes the justfiles from [`ublue-os/bling`](https://github.com/ublue-os/bling), if you wish to disable that, you need to just remove the line that includes bling.just.
+Daha sonra mevcut tarifleri listelemek için "sadece" yazın.
 
-See [the just-page in the Universal Blue documentation](https://universal-blue.org/guide/just/) for more information.
+`/usr/share/ublue-os/just/custom.just` dosyası, görüntünüze eklemek istediğiniz özel komutlar (tarifler) için tasarlanmıştır. Varsayılan olarak, [`ublue-os/bling`](https://github.com/ublue-os/bling) adresindeki justfiles dosyalarını içerir, eğer bunu devre dışı bırakmak istiyorsanız, sadece bling içeren satırı kaldırmanız gerekir. .Sadece.
+
+Daha fazla bilgi için [Universal Blue belgelerindeki adil sayfaya](https://universal-blue.org/guide/just/) bakın.
