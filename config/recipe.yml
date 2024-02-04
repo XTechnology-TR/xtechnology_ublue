@@ -32,12 +32,10 @@ modules:
       - gnome-tweaks
       - inxi
       - python3-pip
+      - libadwaita
     remove:
       - firefox # varsayılan firefox, düzpak lehine kaldırıldı
       - firefox-langpacks # Bağımlılık sorunlarını önlemek için langpack'lerin de kaldırılması gerekiyor
-  - type: akmods
-    install:
-      - nvidia 
   - type: bling # ublue-os/bling'den ne alınacağını yapılandırın
     install:
       - justfiles # "!include /usr/share/ublue-os/just/100-bling.just" ekleyin
@@ -49,17 +47,27 @@ modules:
       - laptop # TLP'yi yükler ve sisteminizi dizüstü bilgisayar kullanımı için yapılandırır
   - type: yafti # dahilse, yafti ve bağımlılıkları (pip & libadwaita)
     # yüklenecek ve kurulacak
-    custom-flatpaks: # bu bölüm isteğe bağlıdır
-      - Extension Manager: com.mattjakeman.ExtensionManager
-      - Discord: com.discordapp.Discord
-      - Telegram Desktop: org.telegram.desktop
-      - Prompt: org.gnome.Prompt.Devel
-      - FileZilla: org.filezillaproject.Filezilla
-      - Microsoft Edge (dev): com.microsoft.EdgeDev
+  - type: default-flatpaks
+    notify: true # Send notification after install/uninstall is finished (true/false)
+    system:
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub
+      install:
+      - com.mattjakeman.ExtensionManager
+      - com.discordapp.Discord
+      - org.telegram.desktop
+      - org.gnome.Prompt.Devel
+      - org.filezillaproject.Filezilla
+      - com.microsoft.EdgeDev
+      remove:
+    user:
+      repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      repo-name: flathub 
   - type: script
     scripts:
       # bu, imzalı görsellerin çalışması için uygun politika ve imzalama dosyalarını ayarlar
       - signing.sh
+      - alternatives-workaround.sh
   - type: fonts
     fonts:
       nerd-fonts:
