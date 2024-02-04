@@ -15,7 +15,7 @@ modules:
         # config/files/usr dosyasını görüntünüzün /usr dosyasına kopyalar
         #
         # önyüklenen sistemde /etc/dizininde olmasını istediğiniz yapılandırma
-        # /usr/etc/dizinine eklenmelidir çünkü bu uygun "dağıtım"dır
+      - etc: /usr/etc #dizinine eklenmelidir çünkü bu uygun "dağıtım"dır
         # ostree'deki config dizini. Dosyalar modülünün README dosyasında daha fazlasını okuyun
   - type: rpm-ostree
     repos:

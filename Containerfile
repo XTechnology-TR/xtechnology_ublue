@@ -28,11 +28,11 @@ COPY cosign.pub /usr/share/ublue-os/cosign.pub
 COPY --from=ghcr.io/ublue-os/bling:latest /rpms /tmp/bling/rpms
 COPY --from=ghcr.io/ublue-os/bling:latest /files /tmp/bling/files
 
-ADD files/etc/udev/rules.d /tmp/ublue-os/udev-rules/etc/udev/rules.d
-ADD files/etc/fish /tmp/ublue-os/fish/etc/fish
-ADD files/etc/rpm-ostreed.conf /tmp/ublue-os/update-services/etc/rpm-ostreed.conf
-ADD files/etc/modprobe.d /tmp/ublue-os/modprobe/etc/modprobe.d
-ADD files/etc/dracut.conf.d /tmp/ublue-os/dracut-conf/etc/dracut.conf.d
+ADD files/usr/etc/udev/rules.d /tmp/ublue-os/udev-rules/etc/udev/rules.d
+ADD files/usr/etc/fish /tmp/ublue-os/fish/etc/fish
+ADD files/usr/etc/rpm-ostreed.conf /tmp/ublue-os/update-services/etc/rpm-ostreed.conf
+ADD files/usr/etc/modprobe.d /tmp/ublue-os/modprobe/etc/modprobe.d
+ADD files/usr/etc/dracut.conf.d /tmp/ublue-os/dracut-conf/etc/dracut.conf.d
 
 RUN tar cf /tmp/ublue-os/rpmbuild/SOURCES/ublue-os-udev-rules.tar.gz -C /tmp ublue-os/udev-rules
 RUN tar cf /tmp/ublue-os/rpmbuild/SOURCES/ublue-os-fish.tar.gz -C /tmp ublue-os/fish
