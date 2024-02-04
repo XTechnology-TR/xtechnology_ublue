@@ -42,27 +42,30 @@ Kurulumdan sonra, özel görüntünüzü tanımlamak için bu README'yi güncell
 Mevcut bir Silverblue/Kinoite kurulumunu en son sürüme yeniden temellendirmek için:
 
 -Doğru imzalama anahtarlarını ve ilkelerini yüklemek için öncelikle imzasız görüntüyü yeniden temellendirin:
-  ''''
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/xteknoloji-tr/xteknoloji_ublue:latest
-  ''''
+
+ ```
+  rpm-ostree rebase ostree-unverified-registry:ghcr.io/xtechnology-tr/xtechnology_ublue:latest
+  ```
+  
 -Yeniden yapılandırmayı tamamlamak için yeniden başlatın:
-  ''''
-  systemctl yeniden başlat
-  ''''
+ ```
+  systemctl reboot
+  ```
 -Daha sonra imzalı görseli şu şekilde yeniden düzenleyin:
-  ''''
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xteknoloji-tr/xteknoloji_ublue:latest
-  ''''
+  ```
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xtechnology-tr/xtechnology_ublue:latest
+  ```
 -Kurulumu tamamlamak için yeniden başlatın
-  ''''
-  systemctl yeniden başlat
-  ''''
+ ```
+  systemctl reboot
+  ```
 
 Bu depo aynı zamanda tarih etiketleri de oluşturur, dolayısıyla belirli bir günün yapısını yeniden oluşturmak istiyorsanız:
 
-''''
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xteknoloji-tr/xteknoloji_ublue:20230403
-''''
+```
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xtechnology-tr/xtechnology_ublue:20230403
+```
+
 Bu depo varsayılan olarak imzalamayı da destekler.
 
 'En son' etiketi otomatik olarak en son yapıya işaret edecektir. Bu yapı yine de her zaman "recipe.yml"de belirtilen Fedora sürümünü kullanacaktır, böylece yanlışlıkla bir sonraki ana sürüme güncellenmezsiniz.
