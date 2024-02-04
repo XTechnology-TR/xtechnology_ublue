@@ -35,15 +35,12 @@ modules:
       - libadwaita
     remove:
       - firefox # varsayılan firefox, düzpak lehine kaldırıldı
-      - firefox-langpacks # Bağımlılık sorunlarını önlemek için langpack'lerin de kaldırılması gerekiyor
+      - firefox-langpacks
+      - gnome-tour # Bağımlılık sorunlarını önlemek için langpack'lerin de kaldırılması gerekiyor
   - type: bling # ublue-os/bling'den ne alınacağını yapılandırın
     install:
-      - justfiles # "!include /usr/share/ublue-os/just/100-bling.just" ekleyin
-      #custom.just dosyanızda (varsayılan olarak eklenir) veya yerel justfile dosyasında
-      - nix-installer #belirli sistemler için kabuk kısayolları nix yükleyicisi
       - ublue-os-wallpapers
       - ublue-update # https://github.com/ublue-os/ublue-update
-      - container-tools # konteynerle ilgili araçları /usr/bin üzerine yükler: kind, kubectx, docker-compose ve kubens
       - laptop # TLP'yi yükler ve sisteminizi dizüstü bilgisayar kullanımı için yapılandırır
   - type: yafti # dahilse, yafti ve bağımlılıkları (pip & libadwaita)
     # yüklenecek ve kurulacak
@@ -53,16 +50,16 @@ modules:
       repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
       repo-name: flathub
       install:
-      - com.mattjakeman.ExtensionManager
-      - com.discordapp.Discord
-      - org.telegram.desktop
-      - org.gnome.Prompt.Devel
-      - org.filezillaproject.Filezilla
-      - com.microsoft.EdgeDev
+        - com.mattjakeman.ExtensionManager
+        - com.discordapp.Discord
+        - org.telegram.desktop
+        - org.gnome.Prompt.Devel
+        - org.filezillaproject.Filezilla
+        - com.microsoft.EdgeDev
       remove:
     user:
       repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      repo-name: flathub 
+      repo-name: flathub
   - type: script
     scripts:
       # bu, imzalı görsellerin çalışması için uygun politika ve imzalama dosyalarını ayarlar
