@@ -4,7 +4,7 @@ name: xtechnology_ublue
 description: uBlue görüntüleri kullanarak XTechnology tarafından kişiselleştirilmiş işletim sistemi
 # (FROM) üzerine oluşturulacak temel görüntü ve kullanılacak sürüm etiketi
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: latest # En kısa sürede yeni güncellemeler istiyorsanız en son sürüm de desteklenir
+image-version: 39 # En kısa sürede yeni güncellemeler istiyorsanız en son sürüm de desteklenir
 # modül konfigürasyonu, sırayla yürütülür
 # aynı modülün birden fazla örneğini ekleyebilirsiniz
 modules:
