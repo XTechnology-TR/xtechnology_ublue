@@ -28,18 +28,10 @@ COPY cosign.pub /usr/share/ublue-os/cosign.pub
 COPY --from=ghcr.io/ublue-os/bling:latest /rpms /tmp/bling/rpms
 COPY --from=ghcr.io/ublue-os/bling:latest /files /tmp/bling/files
 
-ADD files/usr/etc/udev/rules.d /tmp/ublue-os/udev-rules/etc/udev/rules.d
-ADD files/usr/etc/fish /tmp/ublue-os/fish/etc/fish
-ADD files/usr/etc/rpm-ostreed.conf /tmp/ublue-os/update-services/etc/rpm-ostreed.conf
-ADD files/usr/etc/modprobe.d /tmp/ublue-os/modprobe/etc/modprobe.d
-ADD files/usr/etc/dracut.conf.d /tmp/ublue-os/dracut-conf/etc/dracut.conf.d
-
-RUN tar cf /tmp/ublue-os/rpmbuild/SOURCES/ublue-os-udev-rules.tar.gz -C /tmp ublue-os/udev-rules
-RUN tar cf /tmp/ublue-os/rpmbuild/SOURCES/ublue-os-fish.tar.gz -C /tmp ublue-os/fish
-RUN tar cf /tmp/ublue-os/rpmbuild/SOURCES/ublue-os-update-services.tar.gz -C /tmp ublue-os/update-services
-RUN tar cf /tmp/ublue-os/rpmbuild/SOURCES/ublue-os-modprobe.tar.gz -C /tmp ublue-os/modprobe
-RUN tar cf /tmp/ublue-os/rpmbuild/SOURCES/ublue-os-dracut-conf.tar.gz -C /tmp ublue-os/dracut-conf
-
+COPY --from=ghcr.io/ublue-os/config:latest /files/usr/etc/udev/rules /
+COPY --from=ghcr.io/ublue-os/config:latest /files/usr/etc/fish /
+COPY --from=ghcr.io/ublue-os/config:latest /files/usr/etc/modprobe.d /
+COPY --from=ghcr.io/ublue-os/config:latest /files/usr/etc/dracut.conf.d /
 
 # Copy build scripts & configuration
 COPY build.sh /tmp/build.sh
