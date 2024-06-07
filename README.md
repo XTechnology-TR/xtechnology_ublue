@@ -39,27 +39,6 @@ Documentation around making custom images exists / should be written in two sepa
 
 ## Installation
 
-> **Warning**
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) and should not be used in production, try it in a VM for a while!
-
-To rebase an existing Silverblue/Kinoite installation to the latest build:
-
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/xtechnology-tr/xtechnology_ublue:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/xtechnology-tr/xtechnology_ublue:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
 
 This repository builds date tags as well, so if you want to rebase to a particular day's build:
 
@@ -95,4 +74,3 @@ Then type `just` to list the just recipes available.
 
 The file `/usr/share/ublue-os/just/custom.just` is intended for the custom just commands (recipes) you wish to include in your image. By default, it includes the justfiles from [`ublue-os/bling`](https://github.com/ublue-os/bling), if you wish to disable that, you need to just remove the line that includes bling.just.
 
-See [the just-page in the Universal Blue documentation](https://universal-blue.org/guide/just/) for more information.
